@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         :root {
+            --reset: 0;
+            --my-cool-color: #eb2f67;
+            --my-cool-gray: #666;
+            margin: var(--reset);
+        }
+        
+        .cool-p {
+            --my-cool-background: #ccc;
+            background: var(--my-cool-background);
+        }
+        
+        .cool-text {
+            color: var(--my-cool-color);
+        }
+        
+        .cool-gradient {
+            --top-color: orange;
+            --bottom-color: yellow;
+            --my-gradient: linear-gradient(var(--top-color), var(--bottom-color));
+            color: var(--my-cool-gray);
+            background: var(--my-gradient);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>CSS变量实例：</h2>
+        <ul>
+            <li>
+                <p class="cool-p">这一段使用CSS自定义属性,使用时需要使用<strong class="cool-text">var(--my-cool-background)</strong>的形式使用</p>
+            </li>
+            <li>
+                <p class="cool-gradient">这一段使用CSS级联获得另一个CSS变量的值</p>
+            </li>
+        </ul>
+
+    </div>
+    <div>
+        <p>CSS变量（CSS variables）官方称谓自定义属性</p>
+        <h2>CSS变量和预处理其中的变量的区别：</h2>
+        <ul type="square">
+            <li>
+                <p>CSS变量是浏览器直接可用的CSS属性，而预处理中的变量是用于编译成常规的CSS代码</p>
+            </li>
+        </ul>
+
+        <h2>CSS变量,语法:</h2>
+        <ul type="square">
+            <li>
+                <p>在自定义属性前添加双横线前缀，然后想给普通CSS设值一样，给自定义属性设值。而级联变量的部分，通过var()来使用你的自定义属性组成</p>
+            </li>
+            <li>
+                <p>CSS自定义属性,实例：<strong>--my-cool-background:#ccc;</strong></p>
+            </li>
+            <li>
+                <p>CSS级联变量,实例：<strong>var(--my-cool-background)</strong></p>
+            </li>
+        </ul>
+
+        <h2>注意：</h2>
+        <ul type="square">
+            <li>
+                <p><strong>CSS变量区分大小写</strong></p>
+            </li>
+            <li>
+                <p><strong>CSS变量受级联影响</strong>,CSS变量是可继承的</p>
+            </li>
+        </ul>
+
+        <h2>通过Javascript操作CSS变量:</h2>
+        <p>
+            假设在你的CSS文件中，有一个叫做--left-pos的变量，作用在.sidebar选择器中，值为100px：<br> .sidebar {<br> --left-pos: 100px;<br> } <br>
+        </p>
+        <p>那么，通过JavaScript获取--left-pos值，会像下面这样：</p>
+        <p>
+            // 缓存你即将操纵的元素<br> const sidebarElement = document.querySelector(".sidebar")
+        </p>
+        <p>
+            // 缓存sidebarElement的样式于cssStyles中<br> const cssStyle = getComputedStyle(sidebarElement)
+        </p>
+        <p></p>
+        <p>
+            // 获取 --left-pos CSS变量的值<br> const cssVal = String(cssStyle.getPropertyValue('--left-pos')).trim();
+        </p>
+        <p>
+            // 将CSS 变量的值打印到控制台: 100px <br> console.log(cssVal);
+        </p>
+        <p>
+            //如果想通过JavaScript设置CSS变量的值，你可以像这样： <br> sidebarElement.style.setProperty('--left-pos','200px');
+        </p>
+
+        <h2>CSS变量的浏览器支持：</h2>
+        <ul type="square">
+            <li>
+                除了IE11（它不支持CSS变量），所有主流浏览器都对CSS变量有全面支持。
+            </li>
+            <li>
+                对于不支持CSS变量的浏览器，可以使用虚拟查询条件的@supports代码块：
+            </li>
+            <li>
+                section: {color:gray;} <br> @supports(--css:variables) { <br>&nbsp;&nbsp; section { <br> &nbsp;&nbsp;&nbsp;&nbsp;--my-color: blue; <br> &nbsp;&nbsp;&nbsp;&nbsp;color: var(--my-color,'blue'); <br> &nbsp;&nbsp;} <br> }
+            </li>
+            <li>var()中可以使用备用值，上面的代码在Chrome和支持CSS变量的浏览器中，</li>
+            <li>&lt;section&gt;标签里面的文本是蓝色；在IE11中，由于不支持CSS变量，将显示灰色文本;</li>
+        </ul>
+    </div>
+</body>
+
+</html>

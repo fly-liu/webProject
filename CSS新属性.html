@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS新属性</title>
+    <style>
+        html {
+            /* 平滑滚动 */
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            padding-top: 50px;
+        }
+        
+        div {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 50%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #333;
+        }
+        
+        a {
+            display: inline-block;
+            padding: 0 50px;
+            color: #f0f0f0;
+        }
+        
+        a:link,
+        a:visited,
+        a:hover {
+            text-decoration: none;
+        }
+        
+        section {
+            height: 800px;
+            line-height: 800px;
+            text-align: center;
+            background-color: aliceblue;
+        }
+        
+        section:first-child {
+            background-color: #ccc;
+        }
+        
+        section:last-child {
+            background-color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <a href="#html">html</a>
+        <a href="#css">css</a>
+        <a href="#js">javascript</a>
+    </div>
+    <section id="html">
+        <h2>HTML</h2>
+    </section>
+    <section id="css">
+        <h2>CSS</h2>
+    </section>
+    <section id="js">
+        <h2>Javascript</h2>
+    </section>
+</body>
+
+</html>

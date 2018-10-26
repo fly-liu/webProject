@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Http Live Streaming</title>
+		<link href="css/video-js.min.css" rel="stylesheet">
+		<link href="css/mini-video.css" rel="stylesheet"/>
+	</head>
+
+
+	
+	<body>
+		<video
+			id="player" 
+			class="video-js"
+			preload="auto"
+			poster="img/che.png"
+			videoCode='video1'
+			>
+			<source src="media/videos.mp4"></source>
+		  	<!--<source src="http://dlhls.cdn.zhanqi.tv/zqlive/7032_0s2qn.m3u8"></source>-->	
+		</video>
+		
+		<!--视频播放头标题自定义构建-->
+		<!--<template id="to-header-element">
+			<div class="top_area">
+				<div class="top-header">
+					<div class="video-title">这是一个非常现实意义的短影视教育.趁一切还未发生，我们还有时间去纠正。</div>
+					<div class="video-header-btn">
+						<button tag='50' id="full-50">50%</button>
+						<button tag='75' id="full-75">75%</button>
+						<button tag='100' id="full-100">100%</button>
+					</div>
+				</div>
+			</div>
+		</template>-->
+
+	</body>
+	
+	<script src="js/video.min.js"></script>
+	<script src="js/mini-video.js"></script>
+	<script type="text/javascript">
+		var player = videojs('player',{controls:true},function() {
+		});
+	</script>
+</html>

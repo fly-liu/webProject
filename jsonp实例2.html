@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="txt">
+    <ul id="uUl"></ul>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- <script>
+    function show(json) {
+        let oUl = document.getElementById('uUl');
+        oUl.innerHTML = '';
+        json.s.forEach(str => {
+            let oLi = document.createElement('li');
+            oLi.innerHTML = str;
+
+            oUl.appendChild(oLi);
+        });
+    }
+</script> -->
+<script>
+    /*
+     * jsonp实例，根据输入框输入的内容，调用百度接口，获取数据
+     *
+     */
+
+    $(function() {
+        $('#txt').on('input', function(e) {
+            $.ajax({
+                url: `https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${e.target.value}&cb=show`,
+                dataType: 'jsonp',
+                jsonp: 'callback',
+                success(res) {
+                    alert(res);
+                },
+                error(err) {
+                    alert('报错');
+                }
+            });
+        });
+    });
+
+    // window.onload = function() {
+    //     let oText = document.getElementById('txt');
+    //     let oUl = document.getElementById('uUl');
+
+    //     oText.oninput = function() {
+    //         let oS = document.createElement('script');
+    //         oS.id = 'oSrc';
+    //         oS.src = `https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${oText.value}&cb=show`;
+
+    //         document.head.appendChild(oS);
+    //         document.head.removeChild(document.getElementById('oSrc'));
+    //     }
+    // }
+</script>
+
+</html>

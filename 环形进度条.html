@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .main-left {
+            display: flex;
+            align-content: space-between;
+            flex-wrap: wrap;
+            height: 800px;
+        }
+        
+        .main-left div {
+            margin: 10px 10px 0 0;
+            border: 1px solid #2cbdbd;
+            box-shadow: 0 0 8px 0 #3b88e3;
+            width: 100%;
+            height: 28%;
+            text-align: center;
+        }
+        
+        .main-left .main-img {
+            border: 1px #f00 solid;
+            height: 11%;
+            margin: 0;
+            border: 0;
+            box-shadow: none;
+            position: relative;
+            padding-right: 15px;
+        }
+        
+        .main-left .main-img span {
+            color: #fff;
+            font-size: 16px;
+            line-height: 55px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            line-height: 1;
+            padding-right: 15px;
+        }
+        
+        .main-left .circle {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #08293d;
+        }
+        
+        .main-left .circle .ci_text {
+            color: #fff;
+            font-size: 16px;
+            display: block;
+            margin: 10px 0 15px 0;
+        }
+        
+        .main-left .circle .ci_inco {
+            position: absolute;
+            top: 13%;
+            width: 4px;
+            height: 16px;
+            transform: rotate(-270deg);
+            border-radius: 2px;
+            background-color: #2cbdbd;
+        }
+        
+        .main-left .circle .circle_vitality,
+        .main-left .circle .circle_healthy {
+            margin: 0;
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background-image: linear-gradient(40deg, #3bebff, #66ffb8);
+            border-radius: 50%;
+            border: none;
+            box-shadow: none;
+        }
+        
+        .main-left .circle .circle_vitality div,
+        .main-left .circle .circle_healthy div {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0;
+            border: none;
+            box-shadow: none;
+        }
+        
+        .main-left .circle .circle_vitality .vitality_b,
+        .main-left .circle .circle_healthy .healthy_b {
+            background-color: white;
+            clip: rect(auto, 75px, auto, auto);
+            background-color: #1d4a63;
+        }
+        
+        .main-left .circle .circle_vitality #vitality_t,
+        .main-left .circle .circle_healthy #healthy_t {
+            background-color: white;
+            clip: rect(0px, auto, 75px, auto);
+            transform: rotate(90deg);
+            background-color: #1d4a63;
+        }
+        
+        .main-left .circle .circle_vitality .vitality_p,
+        .main-left .circle .circle_healthy .healthy_p {
+            width: 134px;
+            height: 134px;
+            line-height: 134px;
+            left: 8px;
+            top: 8px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #08293d;
+            font-size: 64px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="main-left">
+        <div class="main-img">
+            <img :src="title_img" width='100%' height='100%' />
+            <span>异常列表</span>
+        </div>
+        <div class="circle">
+            <span class="ci_text">活力指数</span>
+            <i class="ci_inco"></i>
+            <div class="circle_vitality">
+                <div class="vitality_b"></div>
+                <div id="vitality_t"></div>
+                <div class="vitality_p">89<span style="font-size:12px">分</span></div>
+            </div>
+        </div>
+        <div class="circle">
+            <span class="ci_text">健康指数</span>
+            <i class="ci_inco"></i>
+            <div class="circle_healthy">
+                <div class="healthy_b"></div>
+                <div id="healthy_t"></div>
+                <div class="healthy_p">30<span style="font-size:12px">分</span></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        var vitality = 89;
+        var healthy = 30;
+
+        window.onload = function() {
+            setPercent(0.89, "vitality_t");
+            setPercent(0.3, "healthy_t");
+        }
+
+        //实现圆形进度条
+        function setPercent(v, t) {
+            if (v < 0.5) {
+                document.getElementById(t).style.backgroundColor = "#1D4A63";
+                document.getElementById(t).style.backgroundImage = "linear-gradient(40deg,#1D4A63,#1D4A63)";
+                document.getElementById(t).style.transform = "rotate(" + (360 * v + 90) + "deg)";
+            } else {
+                document.getElementById(t).style.backgroundColor = "transparent";
+                document.getElementById(t).style.backgroundImage = "linear-gradient(150deg,#3bebff,#66ffb8)";
+                document.getElementById(t).style.transform = "rotate(" + (360 * (v - 0.5) + 90) + "deg)";
+            }
+            // document.getElementById("p").innerHTML = (v * 100) + "%";
+        }
+    </script>
+</body>
+
+</html>

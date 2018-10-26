@@ -1,0 +1,73 @@
+.playper-container {
+	border: 1px #DDD solid;
+    width: 100%;
+    position: relative;
+    height: 406px;
+}
+#player {
+	width: 722px;
+	height: 406px;
+	position: relative;
+}
+#player video {
+	top: 50%;
+    left: 50%;
+	transform: translate(-50%,-50%);
+	transition: width .1s ease;
+}
+.vjs-poster{
+	background-size: cover;
+}
+/*视频预览图播放按钮样式设置*/
+.video-js .vjs-big-play-button{
+	height: 2em;
+	width: 2em;
+	line-height: 2em;
+	border-radius: 50%;
+	background-color: rgba(43,51,63,.7);
+	border: none;
+	outline: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+
+/*视频播放菜单*/
+.top_area {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-size: 14px;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity 1s;
+}
+.top_area .top-header {
+	text-align: left;
+    padding: 20px;
+    z-index: 9;
+    box-sizing: border-box;
+    color: #fff;
+    display: flex;
+    position: relative;
+}
+.top_area .top-header .video-header-btn{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+.top_area .top-header .video-title{
+    width: 33%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+.top_area .top-header .video-header-btn button {
+	outline: none;
+	cursor: pointer;
+}
